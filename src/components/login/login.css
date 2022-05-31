@@ -1,0 +1,95 @@
+/*body {*/
+/*    background-color: whitesmoke;*/
+/*}*/
+.todo-list {
+    background-color: white;
+    margin: auto auto auto auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*border: 1px solid #efefef;*/
+    box-shadow: /* top layer shadow */ 0 1px 1px rgba(0, 0, 0, 0.15),
+        /* the second layer */ 0 10px 0 -5px #eee,
+        /* second layer shadow */ 0 10px 1px -4px rgba(0, 0, 0, 0.15),
+        /* the third layer */ 0 20px 0 -10px #eee,
+        /* third layer shadow */ 0 20px 1px -9px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+}
+
+.todo-item {
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 0px 0;
+    width: 100%;
+    border-bottom: 2px solid dodgerblue;
+    font-family: Roboto, sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+    color: #333333;
+}
+
+.paddingBottom {
+    padding-bottom: 20px;
+}
+
+.sign-in-form {
+    width: 100%;
+    /*padding: 15px;*/
+    max-width: 350px;
+    margin: auto;
+    font-weight: bold;
+    padding-top: 30px;
+}
+
+.form-text {
+    margin-right: 20px;
+    margin-left: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    bottom: 20px;
+
+    /*text-align: center;*/
+    min-width: 350px;
+    color: black;
+}
+
+.font-size {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.margin {
+    margin-right: 20px;
+    margin-left: 20px;
+    padding: 20px;
+}
+
+.sign-in-text {
+    text-align: center;
+    color: #4169e1;
+}
+
+.black-text {
+    text-align: center;
+    color: black;
+}
+
+.sign-in-button {
+    background-color: #eeeeee;
+    color: royalblue;
+    border: black;
+    font-size: 13px;
+    margin-right: 50px;
+    width: 200px;
+}
+
+div.sign-in-form h1 {
+    padding-bottom: 15px;
+    padding-left: 15px;
+}
+
+.backend-response {
+    margin-top: 10px;
+}
+
