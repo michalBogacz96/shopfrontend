@@ -21,6 +21,7 @@ const ProductsPanel = () => {
 
         const getData =  () => {
             try {
+                console.log("JESTEM W PRODUKTACH")
                 axios.get(config.apiUrl + '/product').then(res => {
                     setProducts(res.data)
                 })

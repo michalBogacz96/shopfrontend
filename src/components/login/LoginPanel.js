@@ -1,12 +1,13 @@
 import React, {useContext, useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-
 import NavbarInLoginPage from "../navbars/NavbarInLoginPage";
 import './login.css'
 import axios from "axios";
 import queryString from 'query-string';
 import {AppContext} from "../../appContext/AppContext";
 import {config} from "../../config/config";
+import {GOOGLE_AUTH_URL} from "../../config/config";
+import googleLogo from '../../img/google-logo.png'
 
 
 function showProductPanel() {
@@ -19,25 +20,19 @@ const LoginPanel = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [token, setToken] = useState('');
 
     const loginHandler = () => {
-        console.log("1");
 
         try {
-            console.log("2");
-            console.log(token);
-            axios.get(config.apiUrl + '/user/self', { headers: { 'Authorization': `Bearer ${token}`}}).then( res =>{
-                console.log("3");
+            let localstorageToken = localStorage.getItem('token');
+            axios.get(config.apiUrl + '/user/self', { headers: { 'Authorization': localstorageToken}}).then( res =>{
                 const me = res.data;
-                console.log(res.data);
                 const user = {
                     firstName: me.firstName,
                     lastName: me.lastName,
                     email: me.email
                 };
-                setUserContext(`Bearer ${token}`, user, true);
-                console.log("4");
+                setUserContext(localstorageToken, user, true);
                 showProductPanel();
             });
         } catch (e) {
@@ -65,14 +60,13 @@ const LoginPanel = () => {
 
 
     const loginSubmit = () => {
-        console.log("jestem tu")
-        console.log(token)
         axios.post(config.apiUrl +'/user/auth',
             { email, password }).then( res =>
             {
-                setToken(res.data.token);
+                let myToken = ['Bearer', ' ', res.data.accessToken].join('')
+                localStorage.setItem('token', myToken);
                 setUserContext(null, null, true);
-                loginHandler(token);
+                loginHandler(myToken);
             }
         );
     };
@@ -82,6 +76,11 @@ const LoginPanel = () => {
                 <div className="todo-list">
                     <div className="sign-in-form">
                         <h1 className="sign-in-text font-weight-bold">Sign in</h1>
+
+                        <div>
+                            <a className="btn btn-block social-btn google" href={GOOGLE_AUTH_URL}>
+                                <img src={googleLogo} alt="Google" /> Log in with Google</a>
+                        </div>
                         <form className="form-text">
                             <div className="form-group paddingBottom">
                                 <label className="black-text">Email</label>
@@ -99,7 +98,6 @@ const LoginPanel = () => {
                                     onClick={loginSubmit}
                             >Sign In
                             </button>
-                            {/*<BackendResponse status={this.state.status} backendMessage={this.state.backendMessage}/>*/}
                         </form>
                         <p className="font-size">
                             <Link to="/registration" className="font-size margin">

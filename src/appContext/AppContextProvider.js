@@ -15,9 +15,10 @@ export default function AppContextProvider({children}){
     const getTotalPrice = totalprice
 
     const setUserContext = (token, user, isLogin) => {
+        token = localStorage.getItem('token');
         const temp = { token, user, isLogin};
         _setUserContext(temp);
-        localStorage.setItem('app_user_context', JSON.stringify(temp))
+        localStorage.setItem('app_user_context', JSON.stringify(temp));
     };
 
     const setPrice = price => {
@@ -30,13 +31,13 @@ export default function AppContextProvider({children}){
             items
         };
         _setBasketContext(temp);
-        localStorage.setItem('app_basket_context', JSON.stringify(temp))
+        localStorage.setItem('app_basket_context', JSON.stringify(temp));
     };
 
     const addProductToBasket = (product_id) => {
         if (!_basketContext.items.includes(product_id)) {
             const items = [..._basketContext.items, product_id];
-            setBasketItems(items)
+            setBasketItems(items);
         }
     };
 
