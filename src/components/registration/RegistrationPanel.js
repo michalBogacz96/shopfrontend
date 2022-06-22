@@ -68,7 +68,6 @@ const RegistrationPanel = () => {
                         <button type="submit" className="btn btn-primary btn-block" onClick={registerUser}>Register New
                             Account
                         </button>
-                        {/*<BackendResponse status={this.state.status} backendMessage={this.state.backendMessage}/>*/}
                     </form>
                     <p className="paddingTop">
                         <Link to="/">

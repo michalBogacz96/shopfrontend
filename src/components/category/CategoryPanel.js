@@ -4,6 +4,10 @@ import {config} from "../../config/config";
 import CategoryItem from "./CategoryItem";
 import './CategoryPanel.css'
 import {AppContext} from "../../appContext/AppContext";
+import OrdersHistory from "../navbars/buttons/OrdersHistory";
+import Products from "../navbars/buttons/Products";
+import Basket from "../navbars/buttons/Basket";
+import Logout from "../navbars/buttons/Logout";
 
 function showBasketPanel() {
     window.location.href = "/basket";
@@ -43,26 +47,10 @@ const CategoryPanel = () => {
 
                 <div className="row justify-content-between">
                     <div className="col-9 text-right ">
-
-                        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
-                        >Historia zakupów
-                        </button>
-                        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold" onClick={() => {
-                            window.location.href = "/product";
-                        }}
-                        >Produkty
-                        </button>
-                        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold" onClick={showBasketPanel}
-                        >Koszyk
-                        </button>
-                        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
-                                onClick={() => {
-                                    setUserContext(null, null, false);
-                                    window.location.href = "/";
-                                }
-                                }
-                        >Wyloguj
-                        </button>
+                        <OrdersHistory/>
+                        <Products/>
+                        <Basket/>
+                        <Logout/>
                     </div>
                 </div>
             </div>

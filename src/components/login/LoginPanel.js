@@ -6,8 +6,9 @@ import axios from "axios";
 import queryString from 'query-string';
 import {AppContext} from "../../appContext/AppContext";
 import {config} from "../../config/config";
-import {GOOGLE_AUTH_URL} from "../../config/config";
+import {GOOGLE_AUTH_URL, GITHUB_AUTH_URL} from "../../config/config";
 import googleLogo from '../../img/google-logo.png'
+import githubLogo from '../../img/github-logo.png'
 
 
 function showProductPanel() {
@@ -80,6 +81,8 @@ const LoginPanel = () => {
                         <div>
                             <a className="btn btn-block social-btn google" href={GOOGLE_AUTH_URL}>
                                 <img src={googleLogo} alt="Google" /> Log in with Google</a>
+                            <a className="btn btn-block social-btn google" href={GITHUB_AUTH_URL}>
+                                <img src={githubLogo} alt="Github" /> Log in with Github</a>
                         </div>
                         <form className="form-text">
                             <div className="form-group paddingBottom">

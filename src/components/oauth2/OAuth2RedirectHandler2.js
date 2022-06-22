@@ -74,7 +74,6 @@ const OAuth2RedirectHandler2 = () => {
 
         </div>
     )
-
 }
 
 export default OAuth2RedirectHandler2

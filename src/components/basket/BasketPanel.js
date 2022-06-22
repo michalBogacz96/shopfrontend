@@ -4,16 +4,10 @@ import {AppContext} from "../../appContext/AppContext";
 import axios from "axios";
 import {config} from "../../config/config";
 import BasketItem from "./BasketItem";
-
-
-function showProductPanel() {
-    window.location.href = "/product";
-}
-
-function showCategoryPanel() {
-    window.location.href = "/category";
-}
-
+import OrdersHistory from "../navbars/buttons/OrdersHistory";
+import Categories from "../navbars/buttons/Categories";
+import Products from "../navbars/buttons/Products";
+import Logout from "../navbars/buttons/Logout";
 
 
 
@@ -32,6 +26,7 @@ export default function () {
                 try {
                     let params = getBasketItems
 
+
                     for (let i = 0; i < params.length; i++) {
                         const res = await axios.get(config.apiUrl + `/product/${params[i]}`)
                         resData.push(res.data)
@@ -48,25 +43,53 @@ export default function () {
         }, [])
 
     let tabOfNumbers = product.map(p => p.price)
-    // let total = tabOfNumbers.reduce((a, b) => a + b, 0)
 
     const prod = product.map(productItem =>
         <BasketItem key={productItem.id}
-                     id={productItem.id}
-                     name={productItem.name}
-                     description={productItem.description}
-                     price={productItem.price}
-                     photo={productItem.photo}
-                     category={productItem.categoryEntity.name}
+                    id={productItem.id}
+                    name={productItem.name}
+                    description={productItem.description}
+                    price={productItem.price}
+                    photo={productItem.photo}
+                    category={productItem.categoryEntity.name}
         />)
 
     const sendOrder = async () => {
-        const pars = {
-            items: getBasketItems,
-            price: price
+
+
+        let params = getBasketItems;
+        let products = [params.length];
+        for (let i = 0; i < params.length; i++) {
+            products[i] = params[i];
         }
 
-        axios.post(config.apiUrl + '/orderItem', pars)
+        console.log("params")
+        console.log(products)
+        console.log(typeof products)
+        console.log("jeden params")
+        console.log(products[0])
+        console.log(typeof products[0])
+
+
+        const data = "MOJ STRING"
+
+
+        const pars = {
+            products: getBasketItems
+        }
+        console.log("MOJE DANE DO WYSYLKI");
+        console.log(pars);
+
+        try {
+            const res = await axios.post(config.apiUrl + '/order', products)
+                console.log("PO ODPOWIEDZI")
+                console.log(res.data);
+                removeAllProductsFromBasket();
+                // window.location.reload();
+
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     return (
@@ -76,20 +99,10 @@ export default function () {
 
                 <div className="row justify-content-between">
                     <div className="col-9 text-right ">
-                        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
-                        >Historia zakupów
-                        </button>
-                        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
-                                onClick={showCategoryPanel}
-                        >Categories
-                        </button>
-                        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
-                                onClick={showProductPanel}
-                        >Produkty
-                        </button>
-                        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
-                        >Wyloguj
-                        </button>
+                        <OrdersHistory/>
+                        <Categories/>
+                        <Products/>
+                        <Logout/>
                     </div>
                 </div>
             </div>
@@ -104,21 +117,15 @@ export default function () {
                             }}>Usun wszystko z koszyka
                     </button>
                     <button type="button"
-                            className="btn btn-primary btn-lg my-button-style font-weight-bold" onClick={() => sendOrder()}>Zamow
+                            className="btn btn-primary btn-lg my-button-style font-weight-bold"
+                            onClick={() => sendOrder()}>Zamow
                     </button>
-                    {/*<button type="button"*/}
-                    {/*        className="btn btn-primary  my-button-style font-weight-bold">Sort by price desc*/}
-                    {/*</button>*/}
-                    {/*<button type="button"*/}
-                    {/*        className="btn btn-primary  my-button-style font-weight-bold">Sort by price asc*/}
-                    {/*</button>*/}
-
                 </div>
                 <div className="col-md-12 text-center btn-group">
-                    <h2>Do zaplaty:  </h2>
-                    <h2>{tabOfNumbers.reduce((a, b) => a + b, 0) } PLN</h2>
+                    <h2>Do zaplaty: </h2>
+                    <h2>{tabOfNumbers.reduce((a, b) => a + b, 0)} PLN</h2>
                 </div>
-                <div >
+                <div>
                     {prod}
                 </div>
             </div>

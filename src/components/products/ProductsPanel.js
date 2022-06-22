@@ -4,6 +4,10 @@ import axios from 'axios';
 import ProductItem from "./ProductItem";
 import {config} from "../../config/config";
 import {AppContext} from "../../appContext/AppContext";
+import Logout from "../navbars/buttons/Logout";
+import Basket from "../navbars/buttons/Basket";
+import Categories from "../navbars/buttons/Categories";
+import OrdersHistory from "../navbars/buttons/OrdersHistory";
 
 function showBasketPanel() {
     window.location.href = "/basket";
@@ -21,11 +25,12 @@ const ProductsPanel = () => {
 
         const getData =  () => {
             try {
-                console.log("JESTEM W PRODUKTACH")
                 axios.get(config.apiUrl + '/product').then(res => {
                     setProducts(res.data)
                 })
             } catch (e) {
+                console.info("JESTEM JUZ PO ODPOWIEDZI W PRODUKTACH");
+                console.info(e);
                 console.error(e);
             }
         };
@@ -50,26 +55,10 @@ const ProductsPanel = () => {
 
                 <div className="row justify-content-between">
                     <div className="col-9 text-right ">
-
-                        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
-                        >Historia zakupów
-                        </button>
-                        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
-                                onClick={showCategoryPanel}
-                        >Categories
-                        </button>
-                        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
-                                onClick={showBasketPanel}
-                        >Koszyk
-                        </button>
-                        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
-                                onClick={() => {
-                                    setUserContext(null, null, false);
-                                    window.location.href = "/";
-                                }
-                                }
-                        >Wyloguj
-                        </button>
+                        <OrdersHistory/>
+                        <Categories/>
+                        <Basket/>
+                        <Logout/>
                     </div>
                 </div>
             </div>
