@@ -9,7 +9,7 @@ const Categories = () => {
     return (
         <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
                 onClick={showCategoryPanel}
-        >Categories
+        >Kategorie
         </button>
     )
 

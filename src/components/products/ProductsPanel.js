@@ -1,25 +1,13 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import './ProductPanel.css'
 import axios from 'axios';
 import ProductItem from "./ProductItem";
 import {config} from "../../config/config";
-import {AppContext} from "../../appContext/AppContext";
-import Logout from "../navbars/buttons/Logout";
-import Basket from "../navbars/buttons/Basket";
-import Categories from "../navbars/buttons/Categories";
-import OrdersHistory from "../navbars/buttons/OrdersHistory";
+import NavbarPanel from "../navbars/NavbarPanel";
 
-function showBasketPanel() {
-    window.location.href = "/basket";
-}
-
-function showCategoryPanel() {
-    window.location.href = "/category";
-}
 
 const ProductsPanel = () => {
     const [products, setProducts] = useState([]);
-    const { setUserContext } = useContext(AppContext);
 
     useEffect(() => {
 
@@ -54,11 +42,8 @@ const ProductsPanel = () => {
             <div className="container ">
 
                 <div className="row justify-content-between">
-                    <div className="col-9 text-right ">
-                        <OrdersHistory/>
-                        <Categories/>
-                        <Basket/>
-                        <Logout/>
+                    <div className="col-12 text-right ">
+                        <NavbarPanel/>
                     </div>
                 </div>
             </div>

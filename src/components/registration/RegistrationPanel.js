@@ -65,13 +65,13 @@ const RegistrationPanel = () => {
                                    className="form-control" id="password" required value={password}
                                    onChange={f => setPassword(f.target.value)}/>
                         </div>
-                        <button type="submit" className="btn btn-primary btn-block" onClick={registerUser}>Register New
-                            Account
+                        <button type="submit" className="btn btn-primary btn-block" onClick={registerUser}>
+                            Zarejestruj nowe konto
                         </button>
                     </form>
                     <p className="paddingTop">
                         <Link to="/">
-                            Sign in
+                            Zaloguj
                         </Link>
                     </p>
                 </div>

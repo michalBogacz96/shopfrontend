@@ -8,6 +8,7 @@ import SpecificProductPanel from "./components/category/SpecificProductPanel";
 import LoginPanel from "./components/login/LoginPanel";
 import RegistrationPanel from "./components/registration/RegistrationPanel";
 import OAuth2RedirectHandler2 from "./components/oauth2/OAuth2RedirectHandler2";
+import OrdersHistoryPanel from "./components/ordershistory/OrdersHistoryPanel"
 import axios from "axios";
 
 axios.interceptors.request.use((cfg) => {
@@ -30,6 +31,7 @@ function App() {
                     <Route exact path='/product' element=<ProductsPanel/>/>
                     <Route exact path='/basket' element=<BasketPanel/>/>
                     <Route exact path='/category' element=<CategoryPanel/>/>
+                    <Route exact path='/orders' element=<OrdersHistoryPanel/>/>
                     <Route path='/oauth2/redirect' element=<OAuth2RedirectHandler2/>/>
                     <Route path='/product/category/:categoryId' element=<SpecificProductPanel/>/>
                 </Routes>

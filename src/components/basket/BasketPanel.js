@@ -4,11 +4,7 @@ import {AppContext} from "../../appContext/AppContext";
 import axios from "axios";
 import {config} from "../../config/config";
 import BasketItem from "./BasketItem";
-import OrdersHistory from "../navbars/buttons/OrdersHistory";
-import Categories from "../navbars/buttons/Categories";
-import Products from "../navbars/buttons/Products";
-import Logout from "../navbars/buttons/Logout";
-
+import NavbarPanel from "../navbars/NavbarPanel";
 
 
 export default function () {
@@ -24,11 +20,8 @@ export default function () {
             const resData = []
             const sendIds = async () => {
                 try {
-                    let params = getBasketItems
-
-
-                    for (let i = 0; i < params.length; i++) {
-                        const res = await axios.get(config.apiUrl + `/product/${params[i]}`)
+                    for (const element of getBasketItems) {
+                        const res = await axios.get(config.apiUrl + `/product/${element}`)
                         resData.push(res.data)
                     }
                     setProducts(resData)
@@ -56,36 +49,16 @@ export default function () {
 
     const sendOrder = async () => {
 
-
         let params = getBasketItems;
         let products = [params.length];
         for (let i = 0; i < params.length; i++) {
             products[i] = params[i];
         }
 
-        console.log("params")
-        console.log(products)
-        console.log(typeof products)
-        console.log("jeden params")
-        console.log(products[0])
-        console.log(typeof products[0])
-
-
-        const data = "MOJ STRING"
-
-
-        const pars = {
-            products: getBasketItems
-        }
-        console.log("MOJE DANE DO WYSYLKI");
-        console.log(pars);
-
         try {
             const res = await axios.post(config.apiUrl + '/order', products)
-                console.log("PO ODPOWIEDZI")
-                console.log(res.data);
                 removeAllProductsFromBasket();
-                // window.location.reload();
+                window.location.reload();
 
         } catch (e) {
             console.log(e);
@@ -98,11 +71,8 @@ export default function () {
             <div className="container ">
 
                 <div className="row justify-content-between">
-                    <div className="col-9 text-right ">
-                        <OrdersHistory/>
-                        <Categories/>
-                        <Products/>
-                        <Logout/>
+                    <div className="col-12 text-right ">
+                        <NavbarPanel/>
                     </div>
                 </div>
             </div>
