@@ -7,9 +7,9 @@ const OrdersHistory = () => {
     }
 
     return (
-        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
+        <button id="orders" type="button" className="btn btn-primary my-navbar-style font-weight-bold"
                 onClick={showOrdersHistoryPanel}
-        >Historia zakupów
+        >My orders
         </button>
     )
 }

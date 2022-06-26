@@ -9,6 +9,7 @@ import {config} from "../../config/config";
 import {GOOGLE_AUTH_URL, GITHUB_AUTH_URL} from "../../config/config";
 import googleLogo from '../../img/google-logo.png'
 import githubLogo from '../../img/github-logo.png'
+import BackendResponse from "../../config/BackendResponse";
 
 
 function showProductPanel() {
@@ -21,6 +22,8 @@ const LoginPanel = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const [status, setStatus] = useState('');
 
     const loginHandler = () => {
 
@@ -64,10 +67,16 @@ const LoginPanel = () => {
         axios.post(config.apiUrl +'/user/auth',
             { email, password }).then( res =>
             {
-                let myToken = ['Bearer', ' ', res.data.accessToken].join('')
-                localStorage.setItem('token', myToken);
-                setUserContext(null, null, true);
-                loginHandler(myToken);
+                if (res.data.status === false){
+                    setMessage(res.data.message);
+                    setStatus(res.data.status);
+                }else {
+
+                    let myToken = ['Bearer', ' ', res.data.accessToken].join('')
+                    localStorage.setItem('token', myToken);
+                    setUserContext(null, null, true);
+                    loginHandler(myToken);
+                }
             }
         );
     };
@@ -76,34 +85,35 @@ const LoginPanel = () => {
                 <NavbarInLoginPage/>
                 <div className="todo-list">
                     <div className="sign-in-form">
-                        <h1 className="sign-in-text font-weight-bold">Sign in</h1>
+                        <h1 id="signInText" className="sign-in-text font-weight-bold">Sign in</h1>
 
                         <div>
-                            <a className="btn btn-block social-btn google" href={GOOGLE_AUTH_URL}>
-                                <img src={googleLogo} alt="Google" /> Log in with Google</a>
-                            <a className="btn btn-block social-btn google" href={GITHUB_AUTH_URL}>
-                                <img src={githubLogo} alt="Github" /> Log in with Github</a>
+                            <a id="googleLogin" className="btn btn-block social-btn google" href={GOOGLE_AUTH_URL}>
+                                <img src={googleLogo} alt="Google" />Log in with Google</a>
+                            <a id="githubLogin" className="btn btn-block social-btn google" href={GITHUB_AUTH_URL}>
+                                <img src={githubLogo} alt="Github" />Log in with Github</a>
                         </div>
                         <form className="form-text">
                             <div className="form-group paddingBottom">
                                 <label className="black-text">Email</label>
-                                <input placeholder="Email" type="text"
+                                <input id="email" placeholder="Email" type="text"
                                        className="form-control" required value={email}
                                        onChange={f => setEmail(f.target.value)}/>
                             </div>
                             <div className="form-group paddingBottom">
                                 <label className="black-text">Password</label>
-                                <input placeholder="Password" type="password"
+                                <input id="password" placeholder="Password" type="password"
                                        className="form-control"  required value={password}
                                        onChange={f => setPassword(f.target.value)}/>
                             </div>
-                            <button type="button" className="btn btn-primary btn-block font-weight-bold"
+                            <button id="signInButton" type="button" className="btn btn-primary btn-block font-weight-bold"
                                     onClick={loginSubmit}
                             >Sign In
                             </button>
+                            <BackendResponse id="backendMessage" status={status} message={message}/>
                         </form>
-                        <p className="font-size">
-                            <Link to="/registration" className="font-size margin">
+                        <p id="registerButton" className="font-size">
+                            <Link id="registerButton" to="/registration" className="font-size margin">
                                 Register New Account
                             </Link>
                         </p>

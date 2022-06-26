@@ -7,9 +7,9 @@ const Products = () => {
     }
 
     return (
-        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
+        <button id="products" type="button" className="btn btn-primary my-navbar-style font-weight-bold"
                 onClick={showProductPanel}
-        >Produkty
+        >Products
         </button>
     )
 

@@ -8,13 +8,13 @@ const Logout = () => {
 
 
   return (
-      <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
+      <button id="logout" type="button" className="btn btn-primary my-navbar-style font-weight-bold"
               onClick={() => {
                   setUserContext(null, null, false);
                   window.location.href = "/";
               }
               }
-      >Wyloguj
+      >Logout
       </button>
   )
 

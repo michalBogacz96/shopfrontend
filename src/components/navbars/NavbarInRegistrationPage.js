@@ -11,8 +11,8 @@ const NavbarInRegistrationPage = () => {
     return (
         <nav className="navbar navbar-dark bg-secondary justify-content-end">
             <form className="form-inline">
-                <button className="btn btn-primary sign-in-button font-weight-bold" type="button"
-                        onClick={SignIn}>Zaloguj
+                <button id="signInButton" className="btn btn-primary sign-in-button font-weight-bold" type="button"
+                        onClick={SignIn}>Sign In
                 </button>
             </form>
         </nav>

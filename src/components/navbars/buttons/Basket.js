@@ -7,9 +7,9 @@ const Basket = () => {
     }
 
     return (
-        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
+        <button id="basket" type="button" className="btn btn-primary my-navbar-style font-weight-bold"
                 onClick={showBasketPanel}
-        >Koszyk
+        >Basket
         </button>
     )
 

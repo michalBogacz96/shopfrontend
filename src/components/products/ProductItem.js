@@ -1,10 +1,13 @@
 import React, {useContext, useState} from "react";
 import {sport, pilka, rower} from "../../photo";
 import {AppContext} from "../../appContext/AppContext";
+import BackendResponse from "../../config/BackendResponse";
 
 const ProductItem = (props) => {
 
     const {addProductToBasket, getBasketItems} = useContext(AppContext);
+    const [message, setMessage] = useState('');
+    const [status, setStatus] = useState('');
 
     let logo = null;
     if (props.photo === "sport.jpg") {
@@ -25,31 +28,26 @@ const ProductItem = (props) => {
                 </div>
                 <div className="col-4">
                     <ul className="list-group-flush">
-                        <li className="list-group-item">Produkt: {props.name}</li>
-                        <li className="list-group-item">Kategoria: {props.category}</li>
-                        <li className="list-group-item">Cena: {props.price}</li>
-                        <li className="list-group-item">Opis: {props.description}</li>
+                        <li id="productText" className="list-group-item">Product: {props.name}</li>
+                        <li id="categoryText" className="list-group-item">Category: {props.category}</li>
+                        <li id="priceText" className="list-group-item">Price: {props.price}</li>
+                        <li id="descriptionText" className="list-group-item">Description: {props.description}</li>
 
                     </ul>
-                    <button type="submit" className="btn btn-primary btn-lg my-book-style font-weight-bold "
+                    <button id="addToBasketButton" type="submit" className="btn btn-primary btn-lg my-book-style font-weight-bold "
                             onClick={() => {
-                                addProductToBasket(props.id)
+                                addProductToBasket(props.id);
+                                setMessage("Product added to basket");
+                                setStatus(true);
                             }}
-                    >Dodaj do koszyka
+                    >Add to Basket
                     </button>
+                    <BackendResponse id="backendMessage" status={status} message={message}/>
                 </div>
-
                 <div className="col-6">
-
                     <div className="row">
-                        {/*<button type="button" className="btn btn-primary my-book-style font-weight-bold "*/}
-                        {/*        >Book car*/}
-                        {/*</button>*/}
                     </div>
-                    {/*<BackendResponse status={this.state.status} backendMessage={this.state.backendMessage}/>*/}
-
                 </div>
-
             </div>
         </div>
     )

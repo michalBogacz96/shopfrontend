@@ -7,9 +7,9 @@ const Categories = () => {
     }
 
     return (
-        <button type="button" className="btn btn-primary my-navbar-style font-weight-bold"
+        <button id="categories" type="button" className="btn btn-primary my-navbar-style font-weight-bold"
                 onClick={showCategoryPanel}
-        >Kategorie
+        >Categories
         </button>
     )
 
