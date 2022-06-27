@@ -1,3 +1,12 @@
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=michalBogacz96_shopfrontend&metric=bugs)](https://sonarcloud.io/summary/new_code?id=michalBogacz96_shopfrontend)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=michalBogacz96_shopfrontend&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=michalBogacz96_shopfrontend)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=michalBogacz96_shopfrontend&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=michalBogacz96_shopfrontend)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=michalBogacz96_shopfrontend&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=michalBogacz96_shopfrontend)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=michalBogacz96_shopfrontend&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=michalBogacz96_shopfrontend)
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
