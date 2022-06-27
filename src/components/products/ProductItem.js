@@ -5,7 +5,7 @@ import BackendResponse from "../../config/BackendResponse";
 
 const ProductItem = (props) => {
 
-    const {addProductToBasket, getBasketItems} = useContext(AppContext);
+    const {addProductToBasket} = useContext(AppContext);
     const [message, setMessage] = useState('');
     const [status, setStatus] = useState('');
 

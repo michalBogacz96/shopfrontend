@@ -1,8 +1,6 @@
-import {useLocation} from "react-router";
 import {useContext, useEffect, useState} from "react";
-import queryString from "query-string";
 import {AppContext} from "../../appContext/AppContext";
-import {useNavigate, useSearchParams} from "react-router-dom";
+import {useSearchParams} from "react-router-dom";
 import axios from "axios";
 import {config} from "../../config/config";
 
@@ -18,9 +16,9 @@ function redirectToLoginPage() {
 
 const OAuth2RedirectHandler2 = () => {
 
-    const {userContext, setUserContext} = useContext(AppContext);
-    const [token, setToken] = useState('');
-    const [searchParams, setSearchParams] = useSearchParams();
+    const {setUserContext} = useContext(AppContext);
+    const [setToken] = useState('');
+    const [searchParams] = useSearchParams();
     const queryToken = searchParams.get("token");
 
 
@@ -61,7 +59,7 @@ const OAuth2RedirectHandler2 = () => {
                 let myToken = ['Bearer', ' ', queryToken].join('')
                 localStorage.setItem('token', myToken);
                 setUserContext(null, null, true)
-                loginHandler(queryToken);
+                loginHandler();
             }
         }
         tryLogin();

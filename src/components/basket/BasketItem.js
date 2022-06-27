@@ -1,11 +1,10 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import {sport, pilka} from "../../photo";
 import {AppContext} from "../../appContext/AppContext";
 
 const BasketItem = (props) => {
 
-    const {removeProductFromBasket, getBasketItems} = useContext(AppContext);
-    const [product, setProducts] = useState([])
+    const {removeProductFromBasket} = useContext(AppContext);
 
     let logo = null;
     if (props.photo === "sport.jpg") {
@@ -24,10 +23,10 @@ const BasketItem = (props) => {
                 </div>
                 <div className="col-4">
                     <ul className="list-group-flush">
-                        <li className="list-group-item">Produkt: {props.name}</li>
-                        <li className="list-group-item">Kategoria: {props.category}</li>
-                        <li className="list-group-item">Cena: {props.price}</li>
-                        <li className="list-group-item">Opis: {props.description}</li>
+                        <li className="list-group-item">Product: {props.name}</li>
+                        <li className="list-group-item">Category: {props.category}</li>
+                        <li className="list-group-item">Price: {props.price}</li>
+                        <li className="list-group-item">Description: {props.description}</li>
 
                     </ul>
                     <button type="submit" className="btn btn-primary btn-lg my-book-style font-weight-bold "
@@ -35,7 +34,7 @@ const BasketItem = (props) => {
                                 removeProductFromBasket(props.id)
                                 window.location.reload();
                             }}
-                    >Usun z koszyka
+                    >Remove
                     </button>
                 </div>
 

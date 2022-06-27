@@ -13,9 +13,9 @@ const CategoryPanel = () => {
         const getData = async () => {
             try {
                 let res = await axios.get(config.apiUrl + '/category')
-                let categories = res.data;
-                setCategories(categories)
-                console.log(categories)
+                let responseCategories = res.data;
+                setCategories(responseCategories)
+                console.log(responseCategories)
 
             } catch (e) {
                 console.error(e);

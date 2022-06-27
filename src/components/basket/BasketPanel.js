@@ -10,9 +10,8 @@ import NavbarPanel from "../navbars/NavbarPanel";
 export default function () {
     const {getBasketItems, removeAllProductsFromBasket} = useContext(AppContext);
     const [product, setProducts] = useState([])
-    const [price, setPrice] = useState(0)
+    const [setPrice] = useState(0)
 
-    const JsonContext = ({value}) => (<pre>{JSON.stringify(value)}</pre>);
 
 
     useEffect(
@@ -25,9 +24,8 @@ export default function () {
                         resData.push(res.data)
                     }
                     setProducts(resData)
-                    let tabOfNumbers = product.map(p => p.price)
-                    setPrice(tabOfNumbers)
-                    console.log(product)
+                    let price = product.map(p => p.price)
+                    setPrice(price)
                 } catch (e) {
                     console.log(e)
                 }
@@ -47,7 +45,7 @@ export default function () {
                     category={productItem.categoryEntity.name}
         />)
 
-    const sendOrder = async () => {
+    const sendOrder = () => {
 
         let params = getBasketItems;
         let products = [params.length];
@@ -56,9 +54,10 @@ export default function () {
         }
 
         try {
-            const res = await axios.post(config.apiUrl + '/order', products)
+            axios.post(config.apiUrl + '/order', products).then(() => {
                 removeAllProductsFromBasket();
                 window.location.reload();
+            })
 
         } catch (e) {
             console.log(e);

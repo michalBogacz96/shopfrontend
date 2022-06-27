@@ -5,8 +5,7 @@ import './login.css'
 import axios from "axios";
 import queryString from 'query-string';
 import {AppContext} from "../../appContext/AppContext";
-import {config} from "../../config/config";
-import {GOOGLE_AUTH_URL, GITHUB_AUTH_URL} from "../../config/config";
+import {config, GOOGLE_AUTH_URL, GITHUB_AUTH_URL} from "../../config/config";
 import googleLogo from '../../img/google-logo.png'
 import githubLogo from '../../img/github-logo.png'
 import BackendResponse from "../../config/BackendResponse";
@@ -54,7 +53,7 @@ const LoginPanel = () => {
                 let params = queryString.parse(history.location.search);
 
                 if (params.isLogin && params.token) {
-                    loginHandler(params.token);
+                    loginHandler();
                 }
             }
         };
@@ -75,7 +74,7 @@ const LoginPanel = () => {
                     let myToken = ['Bearer', ' ', res.data.accessToken].join('')
                     localStorage.setItem('token', myToken);
                     setUserContext(null, null, true);
-                    loginHandler(myToken);
+                    loginHandler();
                 }
             }
         );

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class BackendResponse extends Component {
 
-    constructor(props) {
+    constructor() {
         super();
     }
 
