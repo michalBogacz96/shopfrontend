@@ -17,7 +17,8 @@ RUN apt-get install -y npm && npm install -g npm@latest
 COPY . /tmp
 WORKDIR tmp
 EXPOSE 3000
-cmd ["npm", "start"]
+RUN npm install
+CMD npm start
 
 
 

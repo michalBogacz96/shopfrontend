@@ -42,3 +42,5 @@ X
 (src/components/category/CategoryPanel.js,7\3\73fe3f8cb99619751f73b961155a4d38dadabf5a
 A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
+R
+"src/components/login/LoginPanel.js,7\2\72bec716aabc18affe6497bb71fc29e26cc18bdd
