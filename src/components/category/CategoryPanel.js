@@ -41,13 +41,13 @@ const CategoryPanel = () => {
                 </div>
             </div>
             <div className=" container-fluid todo-list">
-                <h1 className="sign-in-text font-weight-bold">Kategorie</h1>
+                <h1 className="sign-in-text font-weight-bold">Categories</h1>
                 <table className="table table-striped text-center">
                     <thead>
                     <tr>
-                        <th scope="col">Numer</th>
-                        <th scope="col">Nazwa Kateorii</th>
-                        <th scope="col">Szukaj Produktów</th>
+                        <th scope="col">Category Number</th>
+                        <th scope="col">Category Name</th>
+                        <th scope="col">Look for product</th>
                     </tr>
                     </thead>
                     {allCategories}

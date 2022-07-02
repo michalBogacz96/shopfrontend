@@ -14,9 +14,9 @@ export default function AppContextProvider({children}){
     const getBasketItems = _basketContext.items;
     const getTotalPrice = totalprice
 
-    const setUserContext = (_token, user, isLogin) => {
-        let myToken = localStorage.getItem('token');
-        const temp = { myToken, user, isLogin};
+    const setUserContext = (user, isLogin) => {
+        let token = localStorage.getItem('token');
+        const temp = { token, user, isLogin};
         _setUserContext(temp);
         localStorage.setItem('app_user_context', JSON.stringify(temp));
     };

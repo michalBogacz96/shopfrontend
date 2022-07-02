@@ -15,7 +15,7 @@ const CategoryItem = (category) => {
                 <button className="btn btn-primary change-role-button font-weight-bold " onClick={() => {
                     window.location.href = `/product/category/` +category.id;
                 }}
-                >Szukaj Produktu</button>
+                >Find product</button>
             </td>
         </tr>
         </tbody>

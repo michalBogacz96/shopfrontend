@@ -43,16 +43,16 @@ const OrdersHistoryPanel = () => {
                 </div>
             </div>
             <div className=" container-fluid todo-list">
-                <h1 className="sign-in-text font-weight-bold">Zamowienia</h1>
+                <h1 className="sign-in-text font-weight-bold">My Orders</h1>
                 <table className="table table-striped text-center">
                     <thead>
                     <tr>
-                        <th scope="col">Numer Zamowienia</th>
-                        <th scope="col">Nazwa Produktu</th>
-                        <th scope="col">Cena Produktu</th>
-                        <th scope="col">Kategoria</th>
-                        <th scope="col">Data Zamowienia</th>
-                        <th scope="col">Cena Zamowienia</th>
+                        <th scope="col">Order Number</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Product Price</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Order Dare</th>
+                        <th scope="col">Order Price</th>
                     </tr>
                     </thead>
                     {allOrders}

@@ -83,15 +83,15 @@ export default function () {
                             onClick={() => {
                                 removeAllProductsFromBasket()
                                 window.location.reload();
-                            }}>Usun wszystko z koszyka
+                            }}>Remove products from basket
                     </button>
                     <button type="button"
                             className="btn btn-primary btn-lg my-button-style font-weight-bold"
-                            onClick={() => sendOrder()}>Zamow
+                            onClick={() => sendOrder()}>Order
                     </button>
                 </div>
                 <div className="col-md-12 text-center btn-group">
-                    <h2>Do zaplaty: </h2>
+                    <h2>Pay: </h2>
                     <h2>{tabOfNumbers.reduce((a, b) => a + b, 0)} PLN</h2>
                 </div>
                 <div>
