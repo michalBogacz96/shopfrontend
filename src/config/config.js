@@ -1,6 +1,6 @@
 export const config = {
     // "apiUrl": 'http://localhost:8080'
-    "apiUrl": 'https://backendebiznes.azurewebsites.net/'
+    "apiUrl": 'https://backendebiznes.azurewebsites.net'
 };
 
 // export const OAUTH2_REDIRECT_URI = 'http://localhost:3000/oauth2/redirect'
