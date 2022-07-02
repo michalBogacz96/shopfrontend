@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_20372aeccecd47eb8cfca4a74f2625fa }}/michalbogacz96/front:${{ github.sha }}
+        tags: michalbogacz96/front:latest
         file: ./Dockerfile
 
   deploy:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'frontEbiznes'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_c8170af68343405c9ad21192f821239d }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_20372aeccecd47eb8cfca4a74f2625fa }}/michalbogacz96/front:${{ github.sha }}'
+        images: michalbogacz96/front:latest
