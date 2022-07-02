@@ -10,14 +10,11 @@ function showProductPanel() {
     window.location.href = "/product";
 }
 
-function redirectToLoginPage() {
-    window.location.href = "/";
-}
 
 const OAuth2RedirectHandler2 = () => {
 
     const {setUserContext} = useContext(AppContext);
-    const [setToken] = useState('');
+    const [token, setToken] = useState('');
     const [searchParams] = useSearchParams();
     const queryToken = searchParams.get("token");
 
@@ -38,7 +35,7 @@ const OAuth2RedirectHandler2 = () => {
                     lastName: me.lastName,
                     email: me.email
                 };
-                setUserContext(null, user, true);
+                setUserContext(token, user, true);
 
                 showProductPanel();
             });
