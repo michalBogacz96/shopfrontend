@@ -27,3 +27,13 @@ A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 X
 (src/components/products/ProductPanel.css,7\c\7c03c3cba86f618cdc4accbe6e3a06c25460d396
+<
+package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
+:
+
+Dockerfile,6\6\6651ddff6eb82c840ced7c1dddee15c6e1913dd4
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+U
+%src/components/basket/BasketPanel.css,b\3\b3608c3b9799dbb1fb850e548421c0f8046cdcdb

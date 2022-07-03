@@ -10,7 +10,6 @@ import NavbarPanel from "../navbars/NavbarPanel";
 export default function () {
     const {getBasketItems, removeAllProductsFromBasket} = useContext(AppContext);
     const [product, setProducts] = useState([])
-    const [setPrice] = useState(0)
 
 
 
@@ -24,8 +23,6 @@ export default function () {
                         resData.push(res.data)
                     }
                     setProducts(resData)
-                    let price = product.map(p => p.price)
-                    setPrice(price)
                 } catch (e) {
                     console.log(e)
                 }

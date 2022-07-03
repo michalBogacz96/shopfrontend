@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect} from "react";
 import {AppContext} from "../../appContext/AppContext";
 import {useSearchParams} from "react-router-dom";
 import axios from "axios";
@@ -14,7 +14,6 @@ function showProductPanel() {
 const OAuth2RedirectHandler2 = () => {
 
     const {setUserContext} = useContext(AppContext);
-    const [token, setToken] = useState('');
     const [searchParams] = useSearchParams();
     const queryToken = searchParams.get("token");
 
@@ -27,7 +26,6 @@ const OAuth2RedirectHandler2 = () => {
             let localstorageToken = localStorage.getItem('token');
 
             axios.get(config.apiUrl + '/user/self', {headers: {'Authorization': localstorageToken}}).then(res => {
-                console.log("3");
                 const me = res.data;
                 console.log(res.data);
                 const user = {
@@ -35,8 +33,7 @@ const OAuth2RedirectHandler2 = () => {
                     lastName: me.lastName,
                     email: me.email
                 };
-                setUserContext(token, user, true);
-
+                setUserContext(user, true);
                 showProductPanel();
             });
         } catch (e) {
@@ -49,13 +46,12 @@ const OAuth2RedirectHandler2 = () => {
 
     useEffect(() => {
 
-        setUserContext(null, null, false);
+        setUserContext(null, false);
         const tryLogin = () => {
             if (queryToken) {
-                setToken(queryToken);
-                let myToken = ['Bearer', ' ', queryToken].join('')
+                let myToken = ['Bearer', ' ', queryToken].join('');
                 localStorage.setItem('token', myToken);
-                setUserContext(null, null, true)
+                setUserContext(null, true);
                 loginHandler();
             }
         }
